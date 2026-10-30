@@ -1,0 +1,179 @@
+# ko-c-
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thử Thách Nhộm Tóc Cùng Anh Bé 🎀</title>
+    <!-- Font chữ hoạt hình cute -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Mali:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: #ffdeeb;
+            background-image: radial-gradient(#ffa6c9 1.5px, transparent 1.5px), radial-gradient(#ffa6c9 1.5px, #ffdeeb 1.5px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            font-family: 'Mali', cursive;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 4px solid #ff7baf;
+            border-radius: 25px;
+            padding: 25px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Nhãn dán trang trí */
+        .sticker {
+            position: absolute;
+            font-size: 2.2rem;
+            animation: bounce 2s infinite ease-in-out;
+            z-index: 10;
+        }
+        .sticker-1 { top: -20px; left: -15px; transform: rotate(-15deg); }
+        .sticker-2 { top: -20px; right: -15px; transform: rotate(15deg); }
+        .sticker-3 { bottom: -15px; left: 10px; }
+        .sticker-4 { bottom: -15px; right: 10px; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(-10deg); }
+            50% { transform: translateY(-8px) rotate(10deg); }
+        }
+
+        h1 {
+            color: #ff3377;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 0px #fff;
+            line-height: 1.4;
+        }
+
+        .question-box {
+            background: #fff0f5;
+            border: 2px dashed #ff85b3;
+            border-radius: 18px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            color: #d6336c;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-option {
+            background: #ffffff;
+            border: 2px solid #ff99c8;
+            color: #d6336c;
+            padding: 10px 8px;
+            border-radius: 12px;
+            font-family: 'Mali', cursive;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 #ff99c8;
+        }
+
+        .btn-option:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .btn-option.selected {
+            background: #ff4d88;
+            color: white;
+            border-color: #cc0044;
+            box-shadow: 0 4px 0 #cc0044;
+        }
+
+        /* Khu vực câu 2 với nút chạy */
+        .q2-container {
+            display: none;
+            position: relative;
+            min-height: 120px;
+        }
+
+        .btn-run {
+            position: absolute;
+            transition: all 0.2s ease-out;
+            background: #ff6699;
+            color: white;
+            border: 2px solid #b3003b;
+            box-shadow: 0 4px 0 #b3003b;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-family: 'Mali', cursive;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .btn-win {
+            background: #66cc66;
+            color: white;
+            border: 2px solid #2d862d;
+            box-shadow: 0 4px 0 #2d862d;
+            padding: 10px 25px;
+            border-radius: 15px;
+            font-family: 'Mali', cursive;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Màn hình chiến thắng */
+        .win-screen {
+            display: none;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .win-title {
+            color: #ff0055;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .win-msg {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Nhãn dán dễ thương -->
+        <span class="sticker sticker-1">🎀</span>
